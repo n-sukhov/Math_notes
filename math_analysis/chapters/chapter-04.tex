@@ -1,0 +1,351 @@
+\chapter{Непрерывные функции}
+
+% -----------------------------------------------------------------------------
+\lecture{Основные определения и примеры}
+
+\subsection{Непрерывность функции в точке}
+
+\begin{definition}{Непрерывность функции в точке}{c4-continuity-point-initial}
+  Функция $f$ называется непрерывной в точке $a$, если для любой
+  окрестности $V(f(a))$ значения $f(a)$ функции в точке $a$ найдется такая
+  окрестность $U(a)$ точки $a$, образ которой при отображении $f$
+  содержится в $V(f(a))$.
+
+  Приведем формально-логическую запись этого определения вместе с двумя
+  его вариациями, часто используемыми в анализе:
+  \[
+    (f\text{ непрерывна в точке }a)
+    \;:=\;
+    \forall V(f(a))\ \exists U(a)\
+    \bigl(f(U(a))\subset V(f(a))\bigr),
+  \]
+  \[
+    \forall\varepsilon>0\ \exists U(a)\ \forall x\in U(a)\
+    (|f(x)-f(a)|<\varepsilon),
+  \]
+  \[
+    \forall\varepsilon>0\ \exists\delta>0\ \forall x\in\R\
+    \bigl(|x-a|<\delta\Rightarrow|f(x)-f(a)|<\varepsilon\bigr).
+  \]
+\end{definition}
+
+\begin{definition}{Непрерывность функции на произвольном множестве в точке}{c4-continuity-point}
+  Функция $f\colon E\to\R$ называется непрерывной в точке $a\in E$, если
+  для любой окрестности $V(f(a))$ значения $f(a)$ функции, принимаемого ею
+  в точке $a$, найдется такая окрестность $U_E(a)$ точки $a$ в множестве
+  $E$, образ которой $f(U_E(a))$ содержится в $V(f(a))$.
+
+  Итак,
+  \[
+    (f\colon E\to\R\text{ непрерывна в }a\in E)
+    \;:=\;
+    \forall V(f(a))\ \exists U_E(a)\
+    \bigl(f(U_E(a))\subset V(f(a))\bigr).
+  \]
+  Равносильные $\varepsilon$-формы определения:
+  \[
+    \forall\varepsilon>0\ \exists U_E(a)\ \forall x\in U_E(a)\
+    (|f(x)-f(a)|<\varepsilon),
+  \]
+  \[
+    \forall\varepsilon>0\ \exists\delta>0\ \forall x\in E\
+    \bigl(|x-a|<\delta\Rightarrow|f(x)-f(a)|<\varepsilon\bigr).
+  \]
+\end{definition}
+
+\begin{properties}{Непрерывность функции в точке}{c4-continuity-point-properties}
+  \begin{enumerate}[label=\arabic*${}^{\circ}$.]
+    \item В любой изолированной точке области определения функция,
+      очевидно, непрерывна.
+    \item Если $a\in E$ и $a$ \textemdash{} предельная точка множества $E$,
+      то
+      \[
+        (f\colon E\to\R\text{ непрерывна в }a)
+        \quad\Longleftrightarrow\quad
+        \lim_{E\ni x\to a}f(x)=f(a).
+      \]
+    \item Непрерывные в точке функции (операции) и только они
+      перестановочны с операцией предельного перехода:
+      \[
+        \lim_{E\ni x\to a}f(x)
+        =f\!\left(\lim_{E\ni x\to a}x\right).
+      \]
+    \item Если при $a\in E$ окрестности $U_E(a)$ точки $a$ образуют базу
+      $\mathcal B_a$, то
+      \[
+        (f\colon E\to\R\text{ непрерывна в }a\in E)
+        \quad\Longleftrightarrow\quad
+        \lim_{\mathcal B_a}f(x)=f(a).
+      \]
+    \item Непрерывность функции $f\colon E\to\R$ в точке $a\in E$
+      равносильна существованию предела этой функции по базе
+      $\mathcal B_a$ окрестностей $U_E(a)$ точки $a$ в $E$:
+      \[
+        (f\colon E\to\R\text{ непрерывна в }a\in E)
+        \quad\Longleftrightarrow\quad
+        \exists\lim_{\mathcal B_a}f(x).
+      \]
+    \item Функция непрерывна в точке $a\in E$ тогда и только тогда, когда
+      для любого $\varepsilon>0$ найдется окрестность $U_E(a)$ точки $a$ в
+      $E$ такая, на которой колебание $\omega(f;U_E(a))$ функции меньше
+      $\varepsilon$.
+  \end{enumerate}
+\end{properties}
+
+\begin{definition}{Колебание функции в точке}{c4-oscillation-at-point}
+  Величина
+  \[
+    \omega(f;a)=\lim_{\delta\to+0}\omega(f;U_E^\delta(a)),
+  \]
+  где $U_E^\delta(a)$ есть $\delta$-окрестность точки $a$ в множестве $E$,
+  называется колебанием функции $f\colon E\to\R$ в точке $a$.
+\end{definition}
+
+\begin{properties}{Критерий непрерывности через колебание}{c4-oscillation-continuity}
+  Функция непрерывна в точке тогда и только тогда, когда ее колебание в
+  этой точке равно нулю:
+  \[
+    (f\colon E\to\R\text{ непрерывна в }a\in E)
+    \quad\Longleftrightarrow\quad
+    \omega(f;a)=0.
+  \]
+\end{properties}
+
+\begin{definition}{Непрерывность на множестве}{c4-continuity-on-set}
+  Функция $f\colon E\to\R$ называется непрерывной на множестве $E$, если
+  она непрерывна в каждой точке множества $E$.
+
+  Совокупность всех вещественнозначных функций, непрерывных на множестве
+  $E$, обозначается символом $C(E;\R)$ или, короче, $C(E)$.
+\end{definition}
+
+\subsection{Точки разрыва}
+
+\begin{definition}{Точка разрыва}{c4-discontinuity-point}
+  Если функция $f\colon E\to\R$ не является непрерывной в некоторой точке
+  множества $E$, то эта точка называется точкой разрыва функции $f$.
+
+  Формально:
+  \[
+    (a\in E\text{ \textemdash{} точка разрыва функции }f)
+    \;:=\;
+    \exists V(f(a))\ \forall U_E(a)\ \exists x\in U_E(a)\
+    \bigl(f(x)\notin V(f(a))\bigr).
+  \]
+  В $\varepsilon$-$\delta$-форме:
+  \[
+    \exists\varepsilon>0\ \forall\delta>0\ \exists x\in E\
+    \bigl(|x-a|<\delta\ \land\ |f(x)-f(a)|>\varepsilon\bigr).
+  \]
+\end{definition}
+
+\begin{definition}{Точка устранимого разрыва}{c4-removable-discontinuity}
+  Если точка разрыва $a\in E$ функции $f\colon E\to\R$ такова, что
+  существует непрерывная функция $\widetilde f\colon E\to\R$ такая, что
+  \[
+    f|_{E\setminus\{a\}}=\widetilde f|_{E\setminus\{a\}},
+  \]
+  то $a$ называется точкой устранимого разрыва функции $f\colon E\to\R$.
+
+  Точка устранимого разрыва характеризуется тем, что существует предел
+  \[
+    \lim_{E\ni x\to a}f(x)=A,
+  \]
+  но $A\ne f(a)$, и достаточно положить
+  \[
+    \widetilde f(x)=
+    \begin{cases}
+      f(x), & x\in E,\ x\ne a,\\
+      A, & x=a,
+    \end{cases}
+  \]
+  как мы уже получим непрерывную в точке $a$ функцию
+  $\widetilde f\colon E\to\R$.
+\end{definition}
+
+\begin{definition}{Точка разрыва первого рода}{c4-first-kind-discontinuity}
+  Точка $a\in E$ называется точкой разрыва первого рода для функции
+  $f\colon E\to\R$, если существуют пределы
+  \[
+    \lim_{E\ni x\to a-0}f(x)=:f(a-0),
+    \qquad
+    \lim_{E\ni x\to a+0}f(x)=:f(a+0),
+  \]
+  но по крайней мере один из этих пределов не совпадает со значением $f(a)$
+  функции в точке $a$.
+
+  Если все точки множества $E$ в некоторой окрестности точки $a$ лежат по
+  одну сторону от точки $a$, рассматривается только один из указанных
+  пределов.
+\end{definition}
+
+\begin{definition}{Точка разрыва второго рода}{c4-second-kind-discontinuity}
+  Если $a\in E$ \textemdash{} точка разрыва функции $f\colon E\to\R$ и в
+  этой точке не существует по меньшей мере один из пределов, указанных в
+  определении точки разрыва первого рода, то $a$ называется точкой разрыва
+  второго рода.
+
+  Таким образом, имеется в виду, что всякая точка разрыва, не являющаяся
+  точкой разрыва первого рода, является точкой разрыва второго рода.
+\end{definition}
+
+% -----------------------------------------------------------------------------
+\lecture{Свойства непрерывных функций}
+
+\subsection{Локальные свойства}
+
+\begin{theorem}{Локальные свойства непрерывных функций}{c4-local-properties}
+  Пусть $f\colon E\to\R$ \textemdash{} функция, непрерывная в точке
+  $a\in E$. Тогда справедливы следующие утверждения:
+  \begin{enumerate}[label=\arabic*${}^{\circ}$.]
+    \item Функция $f$ ограничена в некоторой окрестности $U_E(a)$ точки
+      $a$.
+    \item Если $f(a)\ne0$, то в некоторой окрестности $U_E(a)$ точки $a$
+      все значения функции положительны или отрицательны вместе с $f(a)$.
+    \item Если функция $g\colon U_E(a)\to\R$ определена в некоторой
+      окрестности точки $a$ и, как и $f\colon E\to\R$, непрерывна в самой
+      точке $a$, то функции:
+      \begin{enumerate}[label=\alph*)]
+        \item $(f+g)(x):=f(x)+g(x)$,
+        \item $(f\cdot g)(x):=f(x)\cdot g(x)$,
+        \item $\left(\dfrac fg\right)(x):=\dfrac{f(x)}{g(x)}$
+          (при условии, что $g(x)\ne0$)
+      \end{enumerate}
+      определены в некоторой окрестности точки $a$ и непрерывны в точке
+      $a$.
+    \item Если функция $g\colon Y\to\R$ непрерывна в точке $b\in Y$, а
+      функция $f$ такова, что $f\colon E\to Y$, $f(a)=b$ и $f$ непрерывна в
+      точке $a$, то композиция $g\circ f$ определена на $E$ и также
+      непрерывна в точке $a$.
+  \end{enumerate}
+\end{theorem}
+
+\subsection{Глобальные свойства непрерывных функций}
+
+\begin{theorem}{Больцано\textendash{}Коши о промежуточном значении}{c4-bolzano-cauchy}
+  Если функция, непрерывная на отрезке, принимает на его концах значения
+  разных знаков, то на отрезке есть точка, в которой функция обращается в
+  нуль.
+
+  В логической символике:
+  \[
+    (f\in C[a,b])\ \land\ (f(a)f(b)<0)
+    \quad\Longrightarrow\quad
+    \exists c\in[a,b]\;(f(c)=0).
+  \]
+\end{theorem}
+
+\begin{corollary}{Теоремы Больцано\textendash{}Коши}{c4-intermediate-value-corollary}
+  Если функция $\varphi$ непрерывна на интервале и в каких-то точках $a$ и
+  $b$ интервала принимает значения $\varphi(a)=A$ и $\varphi(b)=B$, то для
+  любого числа $C$, лежащего между $A$ и $B$, найдется точка $c$, лежащая
+  между точками $a$ и $b$, в которой $\varphi(c)=C$.
+\end{corollary}
+
+\begin{theorem}{Вейерштрасса о максимальном значении}{c4-weierstrass-extreme-value}
+  Функция, непрерывная на отрезке, ограничена на нем. При этом на отрезке
+  есть точка, где функция принимает максимальное значение, и есть точка,
+  где она принимает минимальное значение.
+\end{theorem}
+
+\begin{definition}{Равномерная непрерывность}{c4-uniform-continuity}
+  Функция $f\colon E\to\R$ называется равномерно непрерывной на множестве
+  $E\subset\R$, если для любого числа $\varepsilon>0$ найдется число
+  $\delta>0$ такое, что для любых точек $x_1,x_2\in E$ таких, что
+  $|x_1-x_2|<\delta$, выполнено $|f(x_1)-f(x_2)|<\varepsilon$.
+
+  Короче,
+  \[
+    (f\colon E\to\R\text{ равномерно непрерывна})
+    \;:=\;
+    \forall\varepsilon>0\ \exists\delta>0\ \forall x_1\in E\ \forall x_2\in E
+  \]
+  \[
+    \bigl(|x_1-x_2|<\delta
+    \Rightarrow |f(x_1)-f(x_2)|<\varepsilon\bigr).
+  \]
+  \par
+\end{definition}
+
+\begin{properties}{Равномерная непрерывность}{c4-uniform-continuity-properties}
+  \begin{enumerate}[label=\arabic*${}^{\circ}$.]
+    \item Если функция равномерно непрерывна на множестве, то она
+      непрерывна в любой его точке.
+    \item Непрерывность функции, вообще говоря, не влечет ее равномерную
+      непрерывность.
+  \end{enumerate}
+
+  Отрицание свойства функции быть равномерно непрерывной имеет вид
+  \[
+    (f\colon E\to\R\text{ не является равномерно непрерывной})
+    \;:=\;
+    \exists\varepsilon>0\ \forall\delta>0\ \exists x_1\in E\ \exists x_2\in E
+  \]
+  \[
+    \bigl(|x_1-x_2|<\delta
+    \ \land\ |f(x_1)-f(x_2)|\ge\varepsilon\bigr).
+  \]
+  \par
+\end{properties}
+
+\begin{theorem}{Кантора\textendash{}Гейне о равномерной непрерывности}{c4-cantor-heine}
+  Функция, непрерывная на отрезке, равномерно непрерывна на этом отрезке.
+\end{theorem}
+
+\begin{proposition}{Инъективность непрерывной функции на отрезке}{c4-injective-monotone}
+  Непрерывное отображение $f\colon E\to\R$ отрезка $E=[a,b]$ в $\R$
+  инъективно в том и только в том случае, когда функция $f$ строго
+  монотонна на отрезке $[a,b]$.
+\end{proposition}
+
+\begin{proposition}{Обратная к строго монотонной функции}{c4-inverse-monotone}
+  Каждая строго монотонная функция $f\colon X\to\R$, определенная на
+  числовом множестве $X\subset\R$, обладает обратной функцией
+  $f^{-1}\colon Y\to\R$, которая определена на множестве $Y=f(X)$ значений
+  функции $f$ и имеет на $Y$ тот же характер монотонности, какой имеет
+  функция $f$ на множестве $X$.
+\end{proposition}
+
+\begin{proposition}{Разрывы монотонной функции}{c4-monotone-discontinuities}
+  Функция $f\colon E\to\R$, монотонная на множестве $E\subset\R$, может
+  иметь на $E$ разрывы только первого рода.
+\end{proposition}
+
+\begin{corollary}{Структура разрыва монотонной функции}{c4-monotone-discontinuity-structure}
+  Если $a$ \textemdash{} точка разрыва монотонной функции
+  $f\colon E\to\R$, то по крайней мере один из пределов
+  \[
+    \lim_{E\ni x\to a-0}f(x)=f(a-0),
+    \qquad
+    \lim_{E\ni x\to a+0}f(x)=f(a+0)
+  \]
+  определен; по крайней мере в одном из неравенств
+  $f(a-0)\le f(a)\le f(a+0)$, если $f$ \textemdash{} неубывающая (или
+  $f(a-0)\ge f(a)\ge f(a+0)$, если $f$ \textemdash{} невозрастающая)
+  функция, имеет место знак строгого неравенства; в интервале, определяемом
+  этим строгим неравенством, нет ни одного значения функции; указанные
+  интервалы, отвечающие различным точкам разрыва монотонной функции, не
+  пересекаются.
+\end{corollary}
+
+\begin{corollary}{Множество точек разрыва монотонной функции}{c4-countable-discontinuities}
+  Множество точек разрыва монотонной функции не более чем счетно.
+\end{corollary}
+
+\begin{proposition}{Критерий непрерывности монотонной функции}{c4-monotone-continuity-criterion}
+  Монотонная функция $f\colon E\to\R$, заданная на отрезке $E=[a,b]$,
+  непрерывна на нем тогда и только тогда, когда множество $f(E)$ ее значений
+  само является отрезком с концами $f(a)$ и $f(b)$.
+\end{proposition}
+
+\begin{theorem}{Об обратной функции}{c4-inverse-function}
+  Функция $f\colon X\to\R$, строго монотонная на множестве $X\subset\R$,
+  имеет обратную функцию $f^{-1}\colon Y\to\R$, определенную на множестве
+  $Y=f(X)$ значений функции $f$. Функция $f^{-1}\colon Y\to\R$ монотонна и
+  имеет на $Y$ тот же вид монотонности, какой имеет функция
+  $f\colon X\to\R$ на множестве $X$.
+
+  Если, кроме того, $X$ есть отрезок $[a,b]$ и функция $f$ непрерывна на
+  нем, то множество $Y=f(X)$ есть отрезок с концами $f(a)$, $f(b)$ и функция
+  $f^{-1}\colon Y\to\R$ непрерывна на нем.
+\end{theorem}
