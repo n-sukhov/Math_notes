@@ -1,0 +1,13 @@
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.xdv
+*build/
+tmp/
+Zorich_V_a_-_Matematichesky_Analiz_chast_2__9-E_Izdanie_-_2019.pdf
+Matematichesky_Analiz_chast_1_10-E_Izdanie_2019_Zorich.pdf
+.vscode
