@@ -21,7 +21,6 @@ try {
     $xelatexArgs = @(
         "--enable-installer"
         "--aux-directory=$buildDir"
-        "-jobname=math_analysis_notes_Zorich"
         "-interaction=nonstopmode"
         "-file-line-error"
         "main.tex"
