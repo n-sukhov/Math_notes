@@ -1,0 +1,1057 @@
+\chapter{Предел}
+
+% -----------------------------------------------------------------------------
+\lecture{Предел последовательности}
+
+\subsection{Определения и примеры}
+
+\begin{definition}{Последовательность}{c3-sequence}
+  Функция $f\colon\N\to X$, областью определения которой является множество
+  натуральных чисел, называется последовательностью.
+
+  Значения $f(n)$ функции $f$ называются членами последовательности. Их
+  принято обозначать символом элемента того множества, в которое идет
+  отображение, наделяя символ соответствующим индексом аргумента,
+  $x_n:=f(n)$. Саму последовательность в связи с этим обозначают символом
+  $\{x_n\}$, а также записывают в виде
+  \[
+    x_1,x_2,\ldots,x_n,\ldots
+  \]
+  и называют последовательностью в $X$ или последовательностью элементов
+  множества $X$. Элемент $x_n$ называется $n$-м членом последовательности.
+\end{definition}
+
+\begin{definition}{Предел числовой последовательности}{c3-sequence-limit}
+  Число $A\in\R$ называется пределом числовой последовательности
+  $\{x_n\}$, если для любой окрестности $V(A)$ точки $A$ существует такой
+  номер $N$ (выбираемый в зависимости от $V(A)$), что все члены
+  последовательности, номера которых больше $N$, содержатся в указанной
+  окрестности точки $A$:
+  \[
+    \lim_{n\to\infty}x_n=A
+    \;:=\;
+    \forall V(A)\ \exists N\in\N\ \forall n>N\;(x_n\in V(A)).
+  \]
+  Равносильно: число $A\in\R$ называется пределом последовательности
+  $\{x_n\}$, если для любого $\varepsilon>0$ существует номер $N$ такой,
+  что при всех $n>N$ имеем $|x_n-A|<\varepsilon$:
+  \[
+    \lim_{n\to\infty}x_n=A
+    \;:=\;
+    \forall\varepsilon>0\ \exists N\in\N\ \forall n>N\
+    (|x_n-A|<\varepsilon).
+  \]
+\end{definition}
+
+\begin{definition}{Сходящаяся последовательность}{c3-convergent-sequence}
+  Если $\lim\limits_{n\to\infty}x_n=A$, то говорят, что последовательность
+  $\{x_n\}$ сходится к $A$ или стремится к $A$, и пишут $x_n\to A$ при
+  $n\to\infty$.
+
+  Последовательность, имеющая предел, называется сходящейся.
+  Последовательность, не имеющая предела, называется расходящейся.
+\end{definition}
+
+\subsection{Свойства предела последовательности}
+
+\begin{definition}{Финально постоянная последовательность}{c3-eventually-constant-sequence}
+  Если существуют число $A$ и номер $N$ такие, что $x_n=A$ при любом
+  $n>N$, то последовательность $\{x_n\}$ будем называть финально
+  постоянной.
+\end{definition}
+
+\begin{definition}{Ограниченная последовательность}{c3-bounded-sequence}
+  Последовательность $\{x_n\}$ называется ограниченной, если существует
+  число $M$ такое, что $|x_n|<M$ при любом $n\in\N$.
+\end{definition}
+
+\begin{theorem}{Общие свойства предела последовательности}{c3-sequence-limit-properties}
+  \begin{enumerate}[label=\alph*)]
+    \item Финально постоянная последовательность сходится.
+    \item Любая окрестность предела последовательности содержит все члены
+      последовательности, за исключением конечного их числа.
+    \item Последовательность не может иметь двух различных пределов.
+    \item Сходящаяся последовательность ограничена.
+  \end{enumerate}
+\end{theorem}
+
+\begin{definition}{Арифметические операции над последовательностями}{c3-sequence-arithmetic}
+  Если $\{x_n\}$, $\{y_n\}$ — две числовые последовательности, то их
+  суммой, произведением и частным называются соответственно
+  последовательности
+  \[
+    \{x_n+y_n\},\qquad \{x_ny_n\},\qquad
+    \left\{\frac{x_n}{y_n}\right\}.
+  \]
+  Частное определено лишь при $y_n\ne0$, $n\in\N$.
+\end{definition}
+
+\begin{theorem}{Арифметические свойства предела последовательности}{c3-sequence-limit-arithmetic}
+  Пусть $\{x_n\}$, $\{y_n\}$ — числовые последовательности. Если
+  \[
+    \lim_{n\to\infty}x_n=A,
+    \qquad
+    \lim_{n\to\infty}y_n=B,
+  \]
+  то
+  \begin{enumerate}[label=\alph*)]
+    \item $\displaystyle\lim_{n\to\infty}(x_n+y_n)=A+B$;
+    \item $\displaystyle\lim_{n\to\infty}x_ny_n=AB$;
+    \item $\displaystyle\lim_{n\to\infty}\frac{x_n}{y_n}=\frac AB$,
+      если $y_n\ne0$ $(n=1,2,\ldots)$ и $B\ne0$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{theorem}{Предельный переход и неравенства}{c3-sequence-limit-inequalities}
+  \begin{enumerate}[label=\alph*)]
+    \item Пусть $\{x_n\}$, $\{y_n\}$ — две сходящиеся
+      последовательности, причем
+      \[
+        \lim_{n\to\infty}x_n=A,
+        \qquad
+        \lim_{n\to\infty}y_n=B.
+      \]
+      Если $A<B$, то найдется номер $N\in\N$ такой, что при любом $n>N$
+      выполнено неравенство $x_n<y_n$.
+    \item Пусть последовательности $\{x_n\}$, $\{y_n\}$, $\{z_n\}$ таковы,
+      что при любом $n>N\in\N$ имеет место соотношение
+      $x_n\le y_n\le z_n$. Если при этом последовательности $\{x_n\}$,
+      $\{z_n\}$ сходятся к одному и тому же пределу, то последовательность
+      $\{y_n\}$ также сходится и к этому же пределу.
+  \end{enumerate}
+\end{theorem}
+
+\begin{corollary}{Предельный переход в неравенствах}{c3-sequence-inequality-corollary}
+  Пусть $\lim\limits_{n\to\infty}x_n=A$ и
+  $\lim\limits_{n\to\infty}y_n=B$. Если существует номер $N$ такой, что
+  при любом $n>N$
+  \begin{enumerate}[label=\alph*)]
+    \item $x_n>y_n$, то $A\ge B$;
+    \item $x_n\ge y_n$, то $A\ge B$;
+    \item $x_n>B$, то $A\ge B$;
+    \item $x_n\ge B$, то $A\ge B$.
+  \end{enumerate}
+\end{corollary}
+
+\subsection{Вопросы существования предела последовательности}
+
+\begin{definition}{Фундаментальная последовательность}{c3-cauchy-sequence}
+  Последовательность $\{x_n\}$ называется фундаментальной (или
+  последовательностью Коши), если для любого числа $\varepsilon>0$ найдется
+  такой номер $N\in\N$, что из $n>N$ и $m>N$ следует
+  $|x_m-x_n|<\varepsilon$.
+\end{definition}
+
+\begin{theorem}{Критерий Коши сходимости последовательности}{c3-cauchy-criterion-sequence}
+  Числовая последовательность сходится тогда и только тогда, когда она
+  фундаментальна.
+\end{theorem}
+
+\begin{definition}{Монотонные последовательности}{c3-monotone-sequences}
+  Последовательность $\{x_n\}$ называется возрастающей, если
+  $\forall n\in\N\;(x_n<x_{n+1})$; неубывающей, если
+  $\forall n\in\N\;(x_n\le x_{n+1})$; невозрастающей, если
+  $\forall n\in\N\;(x_n\ge x_{n+1})$; убывающей, если
+  $\forall n\in\N\;(x_n>x_{n+1})$.
+
+  Последовательности этих четырех типов называют монотонными
+  последовательностями.
+\end{definition}
+
+\begin{definition}{Ограниченная сверху последовательность}{c3-sequence-bounded-above}
+  Последовательность $\{x_n\}$ называется ограниченной сверху, если
+  существует число $M$ такое, что $\forall n\in\N\;(x_n<M)$.
+  Аналогично определяется последовательность, ограниченная снизу.
+\end{definition}
+
+\begin{theorem}{Вейерштрасса}{c3-weierstrass-monotone-sequence}
+  Для того чтобы неубывающая последовательность имела предел, необходимо
+  и достаточно, чтобы она была ограниченной сверху.
+\end{theorem}
+
+\begin{properties}{Невозрастающая последовательность}{c3-decreasing-sequence-limit}
+  Для того чтобы невозрастающая последовательность имела предел, необходимо
+  и достаточно, чтобы она была ограниченной снизу. В этом случае
+  \[
+    \lim_{n\to\infty}x_n=\inf_{n\in\N}x_n.
+  \]
+\end{properties}
+
+\begin{corollary}{Предел корня из $n$}{c3-root-n-limit}
+  \[
+    \lim_{n\to\infty}\sqrt[n]{n}=1.
+  \]
+\end{corollary}
+
+\begin{corollary}{Предел корня из положительного числа}{c3-root-a-limit}
+  При любом $a>0$
+  \[
+    \lim_{n\to\infty}\sqrt[n]{a}=1.
+  \]
+\end{corollary}
+
+\begin{definition}{Число $e$}{c3-number-e}
+  \[
+    e:=\lim_{n\to\infty}\left(1+\frac1n\right)^n.
+  \]
+\end{definition}
+
+\begin{definition}{Подпоследовательность}{c3-subsequence}
+  Если $x_1,x_2,\ldots,x_n,\ldots$ — некоторая последовательность, а
+  $n_1<n_2<\ldots<n_k<\ldots$ — возрастающая последовательность
+  натуральных чисел, то последовательность
+  \[
+    x_{n_1},x_{n_2},\ldots,x_{n_k},\ldots
+  \]
+  называется подпоследовательностью последовательности $\{x_n\}$.
+\end{definition}
+
+\begin{lemma}{Больцано--Вейерштрасса}{c3-bolzano-weierstrass}
+  Каждая ограниченная последовательность действительных чисел содержит
+  сходящуюся подпоследовательность.
+\end{lemma}
+
+\begin{definition}{Последовательность, стремящаяся к бесконечности}{c3-sequence-infinite-limit}
+  Условимся писать $x_n\to+\infty$ и говорить, что последовательность
+  $\{x_n\}$ стремится к плюс бесконечности, если для каждого числа $c$
+  найдется номер $N\in\N$ такой, что $x_n>c$ при любом $n>N$.
+
+  В логических обозначениях:
+  \[
+    (x_n\to+\infty):=\forall c\in\R\ \exists N\in\N\ \forall n>N\;(c<x_n),
+  \]
+  \[
+    (x_n\to-\infty):=\forall c\in\R\ \exists N\in\N\ \forall n>N\;(x_n<c),
+  \]
+  \[
+    (x_n\to\infty):=\forall c\in\R\ \exists N\in\N\ \forall n>N\;(c<|x_n|).
+  \]
+  В последних двух случаях говорят соответственно: последовательность
+  $\{x_n\}$ стремится к минус бесконечности и последовательность $\{x_n\}$
+  стремится к бесконечности.
+\end{definition}
+
+\begin{lemma}{О подпоследовательности}{c3-subsequence-lemma}
+  Из каждой последовательности действительных чисел можно извлечь
+  сходящуюся подпоследовательность или подпоследовательность, стремящуюся
+  к бесконечности.
+\end{lemma}
+
+\begin{definition}{Нижний предел последовательности}{c3-liminf-sequence}
+  Число
+  \[
+    l=\lim_{n\to\infty}\inf_{k\ge n}x_k
+  \]
+  называется нижним пределом последовательности $\{x_k\}$ и обозначается
+  $\lim\limits_{k\to\infty}x_k$ с нижней чертой или
+  $\liminf\limits_{k\to\infty}x_k$.
+
+  С учетом конечных и бесконечных значений определение записывается так:
+  \[
+    \liminf_{k\to\infty}x_k:=
+    \lim_{n\to\infty}\inf_{k\ge n}x_k.
+  \]
+\end{definition}
+
+\begin{definition}{Верхний предел последовательности}{c3-limsup-sequence}
+  \[
+    \limsup_{k\to\infty}x_k:=
+    \lim_{n\to\infty}\sup_{k\ge n}x_k.
+  \]
+\end{definition}
+
+\begin{definition}{Частичный предел последовательности}{c3-partial-limit}
+  Число (или символ $-\infty$ или $+\infty$) называют частичным пределом
+  последовательности, если в ней есть подпоследовательность, стремящаяся к
+  этому числу.
+\end{definition}
+
+\begin{proposition}{О нижнем и верхнем пределах ограниченной последовательности}{c3-extreme-partial-limits-bounded}
+  Нижний и верхний пределы ограниченной последовательности являются
+  соответственно наименьшим и наибольшим из ее частичных пределов.
+\end{proposition}
+
+\begin{proposition}{О нижнем и верхнем пределах произвольной последовательности}{c3-extreme-partial-limits-general}
+  Для любой последовательности нижний предел есть наименьший из ее
+  частичных пределов, а верхний предел последовательности — наибольший из
+  ее частичных пределов.
+\end{proposition}
+
+\begin{corollary}{Критерий существования конечного или бесконечного предела}{c3-liminf-limsup-criterion}
+  Последовательность имеет предел или стремится к минус или плюс
+  бесконечности в том и только в том случае, когда нижний и верхний пределы
+  последовательности совпадают.
+\end{corollary}
+
+\begin{corollary}{Сходимость подпоследовательностей}{c3-subsequence-convergence}
+  Последовательность сходится тогда и только тогда, когда сходится любая ее
+  подпоследовательность.
+\end{corollary}
+
+\begin{corollary}{Лемма Больцано--Вейерштрасса}{c3-bw-from-limits}
+  Лемма Больцано--Вейерштрасса как в узкой, так и в расширенной
+  формулировке вытекает из утверждения о нижнем и верхнем пределах
+  ограниченной последовательности и утверждения о нижнем и верхнем
+  пределах произвольной последовательности соответственно.
+\end{corollary}
+
+\subsection{Начальные сведения о рядах}
+
+\begin{definition}{Ряд}{c3-series}
+  Выражение
+  \[
+    a_1+a_2+\ldots+a_n+\ldots
+  \]
+  обозначают символом
+  \[
+    \sum_{n=1}^{\infty}a_n
+  \]
+  и обычно называют рядом или бесконечным рядом.
+\end{definition}
+
+\begin{definition}{Члены ряда}{c3-series-terms}
+  Элементы последовательности $\{a_n\}$, рассматриваемые как элементы ряда,
+  называют членами ряда; элемент $a_n$ называют $n$-м членом ряда.
+\end{definition}
+
+\begin{definition}{Частичная сумма ряда}{c3-partial-sum}
+  Сумму
+  \[
+    s_n=\sum_{k=1}^{n}a_k
+  \]
+  называют частичной суммой ряда или, когда желают указать ее номер,
+  $n$-й частичной суммой ряда.
+\end{definition}
+
+\begin{definition}{Сходящийся ряд}{c3-convergent-series}
+  Если последовательность $\{s_n\}$ частичных сумм ряда сходится, то ряд
+  называется сходящимся. Если последовательность $\{s_n\}$ не имеет
+  предела, то ряд называют расходящимся.
+\end{definition}
+
+\begin{definition}{Сумма ряда}{c3-series-sum}
+  Предел $\lim\limits_{n\to\infty}s_n=s$ последовательности частичных сумм,
+  если он существует, называется суммой ряда. Именно в этом смысле
+  понимается запись
+  \[
+    \sum_{n=1}^{\infty}a_n=s.
+  \]
+\end{definition}
+
+\begin{theorem}{Критерий Коши сходимости ряда}{c3-cauchy-criterion-series}
+  Ряд $a_1+\ldots+a_n+\ldots$ сходится тогда и только тогда, когда для
+  любого $\varepsilon>0$ найдется такое число $N\in\N$, что из
+  $m\ge n>N$ следует
+  \[
+    |a_n+\ldots+a_m|<\varepsilon.
+  \]
+\end{theorem}
+
+\begin{corollary}{Изменение конечного числа членов ряда}{c3-finite-series-change}
+  Если в ряде изменить только конечное число членов, то получающийся при
+  этом новый ряд будет сходиться, если сходился исходный ряд, и будет
+  расходиться, если исходный ряд расходился.
+\end{corollary}
+
+\begin{corollary}{Необходимое условие сходимости ряда}{c3-series-necessary-condition}
+  Для того чтобы ряд $a_1+\ldots+a_n+\ldots$ сходился, необходимо, чтобы
+  его члены стремились к нулю при $n\to\infty$, то есть необходимо
+  \[
+    \lim_{n\to\infty}a_n=0.
+  \]
+\end{corollary}
+
+\begin{definition}{Абсолютная сходимость}{c3-absolute-convergence}
+  Ряд $\sum\limits_{n=1}^{\infty}a_n$ называется абсолютно сходящимся,
+  если сходится ряд $\sum\limits_{n=1}^{\infty}|a_n|$.
+\end{definition}
+
+\begin{properties}{Абсолютная сходимость и сходимость}{c3-absolute-implies-convergence}
+  Если ряд сходится абсолютно, то он сходится.
+\end{properties}
+
+\begin{theorem}{Критерий сходимости рядов с неотрицательными членами}{c3-nonnegative-series-criterion}
+  Ряд $a_1+\ldots+a_n+\ldots$, члены которого — неотрицательные числа,
+  сходится тогда и только тогда, когда последовательность его частичных
+  сумм ограничена сверху.
+\end{theorem}
+
+\begin{theorem}{Теорема сравнения}{c3-series-comparison}
+  Пусть $\sum\limits_{n=1}^{\infty}a_n$,
+  $\sum\limits_{n=1}^{\infty}b_n$ — два ряда с неотрицательными членами.
+  Если существует номер $N\in\N$ такой, что при любом $n>N$ имеет место
+  неравенство $a_n\le b_n$, то из сходимости ряда
+  $\sum\limits_{n=1}^{\infty}b_n$ вытекает сходимость ряда
+  $\sum\limits_{n=1}^{\infty}a_n$, а из расходимости ряда
+  $\sum\limits_{n=1}^{\infty}a_n$ вытекает расходимость ряда
+  $\sum\limits_{n=1}^{\infty}b_n$.
+\end{theorem}
+
+\begin{corollary}{Мажорантный признак Вейерштрасса абсолютной сходимости ряда}{c3-weierstrass-majorant}
+  Пусть $\sum\limits_{n=1}^{\infty}a_n$ и
+  $\sum\limits_{n=1}^{\infty}b_n$ — два ряда. Пусть существует номер
+  $N\in\N$ такой, что при любом $n>N$ имеет место соотношение
+  $|a_n|\le b_n$. При этих условиях для абсолютной сходимости ряда
+  $\sum\limits_{n=1}^{\infty}a_n$ достаточно, чтобы ряд
+  $\sum\limits_{n=1}^{\infty}b_n$ сходился.
+\end{corollary}
+
+\begin{corollary}{Признак Коши}{c3-cauchy-root-test}
+  Пусть $\sum\limits_{n=1}^{\infty}a_n$ — данный ряд и
+  \[
+    \alpha=\limsup_{n\to\infty}\sqrt[n]{|a_n|}.
+  \]
+  Тогда справедливы следующие утверждения:
+  \begin{enumerate}[label=\alph*)]
+    \item если $\alpha<1$, то ряд $\sum\limits_{n=1}^{\infty}a_n$
+      абсолютно сходится;
+    \item если $\alpha>1$, то ряд $\sum\limits_{n=1}^{\infty}a_n$
+      расходится;
+    \item существуют как абсолютно сходящиеся, так и расходящиеся ряды,
+      для которых $\alpha=1$.
+  \end{enumerate}
+\end{corollary}
+
+\begin{corollary}{Признак Даламбера}{c3-dalembert-ratio-test}
+  Пусть для ряда $\sum\limits_{n=1}^{\infty}a_n$ существует предел
+  \[
+    \lim_{n\to\infty}\left|\frac{a_{n+1}}{a_n}\right|=\alpha.
+  \]
+  Тогда справедливы следующие утверждения:
+  \begin{enumerate}[label=\alph*)]
+    \item если $\alpha<1$, то ряд $\sum\limits_{n=1}^{\infty}a_n$
+      сходится абсолютно;
+    \item если $\alpha>1$, то ряд $\sum\limits_{n=1}^{\infty}a_n$
+      расходится;
+    \item существуют как абсолютно сходящиеся, так и расходящиеся ряды,
+      для которых $\alpha=1$.
+  \end{enumerate}
+\end{corollary}
+
+\begin{proposition}{Признак конденсации Коши}{c3-cauchy-condensation}
+  Если $a_1\ge a_2\ge\ldots\ge0$, то ряд
+  \[
+    \sum_{n=1}^{\infty}a_n
+  \]
+  сходится тогда и только тогда, когда сходится ряд
+  \[
+    \sum_{k=0}^{\infty}2^k a_{2^k}
+    =a_1+2a_2+4a_4+8a_8+\ldots
+  \]
+\end{proposition}
+
+\begin{corollary}{Сходимость обобщенного гармонического ряда}{c3-p-series}
+  Ряд
+  \[
+    \sum_{n=1}^{\infty}\frac1{n^p}
+  \]
+  сходится при $p>1$ и расходится при $p\le1$.
+\end{corollary}
+
+% -----------------------------------------------------------------------------
+\lecture{Предел функции}
+
+\subsection{Определения и примеры}
+
+\begin{definition}{Предел функции по Коши}{c3-function-limit-cauchy}
+  Будем (следуя Коши) говорить, что функция $f\colon E\to\R$ стремится к
+  $A$ при $x$, стремящемся к $a$, или что $A$ является пределом функции $f$
+  при $x$, стремящемся к $a$, если для любого числа $\varepsilon>0$
+  существует число $\delta>0$ такое, что для любой точки $x\in E$ такой,
+  что $0<|x-a|<\delta$, выполнено соотношение $|f(x)-A|<\varepsilon$:
+  \[
+    \forall\varepsilon>0\ \exists\delta>0\ \forall x\in E\
+    \bigl(0<|x-a|<\delta\Rightarrow |f(x)-A|<\varepsilon\bigr).
+  \]
+\end{definition}
+
+\begin{definition}{Проколотая окрестность}{c3-punctured-neighborhood}
+  Проколотой окрестностью точки называется окрестность точки, из которой
+  исключена сама эта точка.
+
+  Если $U(a)$ — обозначение окрестности точки $a$, то проколотую
+  окрестность этой точки будем обозначать символом $\mathring U(a)$.
+  Множества
+  \[
+    U_E(a):=E\cap U(a),
+    \qquad
+    \mathring U_E(a):=E\cap\mathring U(a)
+  \]
+  будем называть соответственно окрестностью и проколотой окрестностью
+  точки $a$ в множестве $E$.
+\end{definition}
+
+\begin{definition}{Предел функции в терминах окрестностей}{c3-function-limit-neighborhoods}
+  \[
+    \lim_{E\ni x\to a}f(x)=A
+    \;:=\;
+    \forall V_{\R}(A)\ \exists\mathring U_E(a)\
+    \bigl(f(\mathring U_E(a))\subset V_{\R}(A)\bigr).
+  \]
+  Итак, число $A$ называется пределом функции $f\colon E\to\R$ при $x$,
+  стремящемся по множеству $E$ к точке $a$ (предельной для $E$), если для
+  любой окрестности точки $A$ найдется проколотая окрестность точки $a$ в
+  множестве $E$, образ которой при отображении $f\colon E\to\R$ содержится
+  в заданной окрестности точки $A$.
+\end{definition}
+
+\begin{proposition}{Равносильность определений предела по Коши и по Гейне}{c3-heine-limit}
+  Соотношение
+  \[
+    \lim_{E\ni x\to a}f(x)=A
+  \]
+  имеет место тогда и только тогда, когда для любой последовательности
+  $\{x_n\}$ точек $x_n\in E\setminus\{a\}$, сходящейся к $a$,
+  последовательность $\{f(x_n)\}$ сходится к $A$.
+\end{proposition}
+
+\subsection{Свойства предела функции}
+
+\begin{definition}{Постоянная и финально постоянная функции}{c3-eventually-constant-function}
+  Функцию $f\colon E\to\R$, принимающую только одно значение, будем, как и
+  прежде, называть постоянной. Функция $f\colon E\to\R$ называется
+  финально постоянной при $E\ni x\to a$, если она постоянна в некоторой
+  проколотой окрестности $\mathring U_E(a)$ точки $a$, предельной для
+  множества $E$.
+\end{definition}
+
+\begin{definition}{Ограниченные и финально ограниченные функции}{c3-bounded-function}
+  Функция $f\colon E\to\R$ называется ограниченной, ограниченной сверху,
+  ограниченной снизу, если найдется число $C\in\R$ такое, что для любого
+  $x\in E$ выполнено соответственно
+  \[
+    |f(x)|<C,\qquad f(x)<C,\qquad C<f(x).
+  \]
+  В случае, если первое, второе или третье из этих соотношений выполнено
+  лишь в некоторой проколотой окрестности $\mathring U_E(a)$ точки $a$,
+  функция $f\colon E\to\R$ называется соответственно финально ограниченной
+  при $E\ni x\to a$, финально ограниченной сверху при $E\ni x\to a$,
+  финально ограниченной снизу при $E\ni x\to a$.
+\end{definition}
+
+\begin{theorem}{Общие свойства предела функции}{c3-function-limit-properties}
+  \begin{enumerate}[label=\alph*)]
+    \item Если $f\colon E\to\R$ при $E\ni x\to a$ есть финально постоянная
+      $A$, то $\lim\limits_{E\ni x\to a}f(x)=A$.
+    \item Если существует $\lim\limits_{E\ni x\to a}f(x)$, то
+      $f\colon E\to\R$ финально ограничена при $E\ni x\to a$.
+    \item Если
+      \[
+        \lim_{E\ni x\to a}f(x)=A_1,
+        \qquad
+        \lim_{E\ni x\to a}f(x)=A_2,
+      \]
+      то $A_1=A_2$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{definition}{Арифметические операции над функциями}{c3-function-arithmetic}
+  Если две числовые функции $f\colon E\to\R$, $g\colon E\to\R$ имеют
+  общую область определения $E$, то их суммой, произведением и частным
+  называются соответственно функции, определенные на том же множестве
+  следующими формулами:
+  \[
+    (f+g)(x):=f(x)+g(x),
+    \qquad
+    (f\cdot g)(x):=f(x)g(x),
+  \]
+  \[
+    \left(\frac fg\right)(x):=\frac{f(x)}{g(x)},
+    \qquad g(x)\ne0\quad(x\in E).
+  \]
+\end{definition}
+
+\begin{theorem}{Арифметические свойства предела функции}{c3-function-limit-arithmetic}
+  Пусть $f\colon E\to\R$ и $g\colon E\to\R$ — две функции с общей
+  областью определения. Если
+  \[
+    \lim_{E\ni x\to a}f(x)=A,
+    \qquad
+    \lim_{E\ni x\to a}g(x)=B,
+  \]
+  то
+  \begin{enumerate}[label=\alph*)]
+    \item $\displaystyle\lim_{E\ni x\to a}(f+g)(x)=A+B$;
+    \item $\displaystyle\lim_{E\ni x\to a}(f\cdot g)(x)=AB$;
+    \item $\displaystyle\lim_{E\ni x\to a}\left(\frac fg\right)(x)=\frac AB$,
+      если $B\ne0$ и $g(x)\ne0$ при $x\in E$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{definition}{Бесконечно малая функция}{c3-infinitesimal-function}
+  Функцию $f\colon E\to\R$ называют бесконечно малой при $E\ni x\to a$,
+  если
+  \[
+    \lim_{E\ni x\to a}f(x)=0.
+  \]
+\end{definition}
+
+\begin{proposition}{Свойства бесконечно малых функций}{c3-infinitesimal-properties}
+  \begin{enumerate}[label=\alph*)]
+    \item Если $\alpha\colon E\to\R$ и $\beta\colon E\to\R$ — бесконечно
+      малые функции при $E\ni x\to a$, то их сумма
+      $\alpha+\beta\colon E\to\R$ — также бесконечно малая функция при
+      $E\ni x\to a$.
+    \item Если $\alpha\colon E\to\R$ и $\beta\colon E\to\R$ — бесконечно
+      малые функции при $E\ni x\to a$, то их произведение
+      $\alpha\beta\colon E\to\R$ — также бесконечно малая функция при
+      $E\ni x\to a$.
+    \item Если $\alpha\colon E\to\R$ — бесконечно малая функция при
+      $E\ni x\to a$, а $\beta\colon E\to\R$ — финально ограниченная
+      функция при $E\ni x\to a$, то произведение
+      $\alpha\beta\colon E\to\R$ есть бесконечно малая функция при
+      $E\ni x\to a$.
+  \end{enumerate}
+\end{proposition}
+
+\begin{theorem}{Предельный переход и неравенства}{c3-function-limit-inequalities}
+  \begin{enumerate}[label=\alph*)]
+    \item Если функции $f\colon E\to\R$ и $g\colon E\to\R$ таковы, что
+      \[
+        \lim_{E\ni x\to a}f(x)=A,
+        \qquad
+        \lim_{E\ni x\to a}g(x)=B
+      \]
+      и $A<B$, то найдется проколотая окрестность $\mathring U_E(a)$ точки
+      $a$ в множестве $E$, в любой точке которой выполнено неравенство
+      $f(x)<g(x)$.
+    \item Если между функциями $f\colon E\to\R$, $g\colon E\to\R$ и
+      $h\colon E\to\R$ на множестве $E$ имеет место соотношение
+      $f(x)\le g(x)\le h(x)$ и если
+      \[
+        \lim_{E\ni x\to a}f(x)=
+        \lim_{E\ni x\to a}h(x)=C,
+      \]
+      то существует также предел $g(x)$ при $E\ni x\to a$, причем
+      $\lim\limits_{E\ni x\to a}g(x)=C$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{corollary}{Предельный переход в неравенствах}{c3-function-inequality-corollary}
+  Пусть
+  \[
+    \lim_{E\ni x\to a}f(x)=A,
+    \qquad
+    \lim_{E\ni x\to a}g(x)=B.
+  \]
+  Если в некоторой проколотой окрестности $\mathring U_E(a)$ точки $a$
+  \begin{enumerate}[label=\alph*)]
+    \item выполнено $f(x)>g(x)$, то $A\ge B$;
+    \item выполнено $f(x)\ge g(x)$, то $A\ge B$;
+    \item выполнено $f(x)>B$, то $A\ge B$;
+    \item выполнено $f(x)\ge B$, то $A\ge B$.
+  \end{enumerate}
+\end{corollary}
+
+\begin{properties}{Показательная функция}{c3-exponential-properties}
+  При $a>0$, $a\ne1$ функция $x\mapsto a^x$ обладает следующими
+  свойствами:
+  \begin{enumerate}[label=\arabic*)]
+    \item $a^1=a$;
+    \item $a^{x_1}a^{x_2}=a^{x_1+x_2}$;
+    \item $a^x\to a^{x_0}$ при $x\to x_0$;
+    \item $(a^{x_1}<a^{x_2})\Leftrightarrow(x_1<x_2)$, если $a>1$,
+      и $(a^{x_1}>a^{x_2})\Leftrightarrow(x_1<x_2)$, если $0<a<1$;
+    \item множеством значений функции $x\mapsto a^x$ является множество
+      $\R_+=\{y\in\R\mid 0<y\}$ всех положительных чисел.
+  \end{enumerate}
+\end{properties}
+
+\begin{definition}{Показательная функция}{c3-exponential-function}
+  Отображение $x\mapsto a^x$ называется показательной или экспоненциальной
+  функцией при основании $a$. Особенно часто встречается функция
+  $x\mapsto e^x$, когда $a=e$, которую нередко обозначают через $\exp x$.
+  В связи с этим для обозначения функции $x\mapsto a^x$ также иногда
+  используется символ $\exp_a x$.
+\end{definition}
+
+\begin{definition}{Логарифмическая функция}{c3-logarithmic-function}
+  Отображение, обратное к $\exp_a\colon\R\to\R_+$, называется
+  логарифмической функцией при основании $a$ $(0<a$, $a\ne1)$ и
+  обозначается символом
+  \[
+    \log_a\colon\R_+\to\R.
+  \]
+\end{definition}
+
+\begin{definition}{Натуральный логарифм}{c3-natural-logarithm}
+  При основании $a=e$ логарифмическая функция, или логарифм, называется
+  натуральным логарифмом и обозначается $\ln\colon\R_+\to\R$.
+\end{definition}
+
+\begin{properties}{Логарифмическая функция}{c3-logarithm-properties}
+  В области $\R_+$ своего определения логарифм обладает следующими
+  свойствами:
+  \begin{enumerate}[label=\arabic*${}^{\circ}$.]
+    \item $\log_a a=1$;
+    \item $\log_a(y_1y_2)=\log_a y_1+\log_a y_2$;
+    \item $\log_a y\to\log_a y_0$ при $\R_+\ni y\to y_0\in\R_+$;
+    \item $(\log_a y_1<\log_a y_2)\Leftrightarrow(y_1<y_2)$, если $a>1$,
+      и $(\log_a y_1>\log_a y_2)\Leftrightarrow(y_1<y_2)$, если $0<a<1$;
+    \item множество значений функции $\log_a\colon\R_+\to\R$ совпадает с
+      множеством $\R$ всех действительных чисел;
+    \item для любого $b>0$ и любого $\alpha\in\R$
+      \[
+        \log_a(b^\alpha)=\alpha\log_a b.
+      \]
+  \end{enumerate}
+\end{properties}
+
+\begin{properties}{Правило возведения степени в степень}{c3-power-of-power}
+  Для любых $\alpha,\beta\in\R$ и $a>0$ имеет место равенство
+  \[
+    (a^\alpha)^\beta=a^{\alpha\beta}.
+  \]
+\end{properties}
+
+\begin{definition}{Степенная функция}{c3-power-function}
+  Функция $x\mapsto x^\alpha$, определенная на множестве $\R_+$
+  положительных чисел, называется степенной функцией, а число $\alpha$
+  называется показателем степени.
+\end{definition}
+
+\subsection{Общее определение предела функции (предел по базе)}
+
+\begin{definition}{База}{c3-base}
+  Совокупность $\mathcal B$ подмножеств $B\subset X$ множества $X$ будем
+  называть базой в множестве $X$, если выполнены два условия:
+  \[
+    \mathrm{B}_1)\quad \forall B\in\mathcal B\;(B\ne\varnothing),
+  \]
+  \[
+    \mathrm{B}_2)\quad
+    \forall B_1\in\mathcal B\ \forall B_2\in\mathcal B\
+    \exists B\in\mathcal B\;(B\subset B_1\cap B_2).
+  \]
+  Иными словами, элементы совокупности $\mathcal B$ суть непустые множества
+  и в пересечении любых двух из них содержится некоторый элемент из той же
+  совокупности.
+\end{definition}
+
+\begin{properties}{Наиболее употребительные базы}{c3-standard-bases}
+  \begin{itemize}
+    \item Запись $x\to a$ означает базу проколотых окрестностей точки
+      $a\in\R$, элементами которой служат множества
+      \[
+        \mathring U(a):=
+        \{x\in\R\mid a-\delta_1<x<a+\delta_2\ \land\ x\ne a\},
+        \qquad \delta_1>0,\ \delta_2>0.
+      \]
+    \item Запись $x\to\infty$ означает базу окрестностей бесконечности,
+      элементами которой служат множества
+      \[
+        U(\infty):=\{x\in\R\mid \delta<|x|\},
+        \qquad \delta\in\R.
+      \]
+    \item Записи $x\to a$, $x\in E$, или $E\ni x\to a$ означают базу
+      проколотых окрестностей точки $a$ в множестве $E$:
+      \[
+        \mathring U_E(a):=E\cap\mathring U(a),
+      \]
+      где предполагается, что $a$ — предельная точка множества $E$.
+    \item Записи $x\to\infty$, $x\in E$, или $E\ni x\to\infty$ означают
+      базу окрестностей бесконечности в множестве $E$:
+      \[
+        U_E(\infty):=E\cap U(\infty),
+      \]
+      где предполагается, что множество $E$ не ограничено.
+  \end{itemize}
+
+  Если $E=E_a^+=\{x\in\R\mid x>a\}$
+  (соответственно $E=E_a^-=\{x\in\R\mid x<a\}$), то вместо $x\to a$,
+  $x\in E$ пишут $x\to a+0$ (соответственно $x\to a-0$) и говорят, что
+  $x$ стремится к $a$ справа или со стороны больших значений
+  (соответственно слева или со стороны меньших значений).
+
+  Если $E=E_\infty^+=\{x\in\R\mid c<x\}$
+  (соответственно $E=E_\infty^-=\{x\in\R\mid x<c\}$), то вместо
+  $x\to\infty$, $x\in E$ пишут $x\to+\infty$ (соответственно
+  $x\to-\infty$) и говорят, что $x$ стремится к плюс бесконечности
+  (соответственно к минус бесконечности).
+\end{properties}
+
+\begin{definition}{Предел функции по базе}{c3-limit-by-base}
+  Пусть $f\colon X\to\R$ — функция на множестве $X$; $\mathcal B$ —
+  база в $X$. Число $A\in\R$ называется пределом функции
+  $f\colon X\to\R$ по базе $\mathcal B$, если для любой окрестности $V(A)$
+  точки $A$ найдется элемент $B\in\mathcal B$ базы, образ которого $f(B)$
+  содержится в окрестности $V(A)$.
+
+  Если $A$ — предел функции $f\colon X\to\R$ по базе $\mathcal B$, то
+  пишут
+  \[
+    \lim_{\mathcal B}f(x)=A.
+  \]
+  В логической символике:
+  \[
+    \lim_{\mathcal B}f(x)=A
+    \;:=\;
+    \forall V(A)\ \exists B\in\mathcal B\;(f(B)\subset V(A)),
+  \]
+  или, что равносильно,
+  \[
+    \lim_{\mathcal B}f(x)=A
+    \;:=\;
+    \forall\varepsilon>0\ \exists B\in\mathcal B\ \forall x\in B\
+    (|f(x)-A|<\varepsilon).
+  \]
+\end{definition}
+
+\begin{definition}{Бесконечные пределы по базе}{c3-infinite-limits-by-base}
+  В соответствии с общим определением предела принимаются следующие
+  соглашения:
+  \[
+    \lim_{\mathcal B}f(x)=\infty
+    \;:=\;
+    \forall V(\infty)\ \exists B\in\mathcal B\
+    \bigl(f(B)\subset V(\infty)\bigr),
+  \]
+  или, что то же самое,
+  \[
+    \lim_{\mathcal B}f(x)=\infty
+    \;:=\;
+    \forall\varepsilon>0\ \exists B\in\mathcal B\ \forall x\in B\
+    (\varepsilon<|f(x)|),
+  \]
+  \[
+    \lim_{\mathcal B}f(x)=+\infty
+    \;:=\;
+    \forall\varepsilon\in\R\ \exists B\in\mathcal B\ \forall x\in B\
+    (\varepsilon<f(x)),
+  \]
+  \[
+    \lim_{\mathcal B}f(x)=-\infty
+    \;:=\;
+    \forall\varepsilon\in\R\ \exists B\in\mathcal B\ \forall x\in B\
+    (f(x)<\varepsilon).
+  \]
+\end{definition}
+
+\begin{definition}{Финально постоянная функция при базе}{c3-eventually-constant-base}
+  Функция $f\colon X\to\R$ называется финально постоянной при базе
+  $\mathcal B$, если существуют число $A\in\R$ и такой элемент
+  $B\in\mathcal B$ базы, в любой точке $x\in B$ которого $f(x)=A$.
+\end{definition}
+
+\begin{definition}{Финально ограниченная функция при базе}{c3-eventually-bounded-base}
+  Функция $f\colon X\to\R$ называется ограниченной при базе $\mathcal B$
+  или финально ограниченной при базе $\mathcal B$, если существуют число
+  $c\in\R$ и такой элемент $B\in\mathcal B$ базы, в любой точке $x\in B$
+  которого $|f(x)|<c$.
+\end{definition}
+
+\begin{definition}{Бесконечно малая функция при базе}{c3-infinitesimal-base}
+  Функция $f\colon X\to\R$ называется бесконечно малой при базе
+  $\mathcal B$, если
+  \[
+    \lim_{\mathcal B}f(x)=0.
+  \]
+\end{definition}
+
+\begin{properties}{Свойства предела по произвольной базе}{c3-arbitrary-base-limit-properties}
+  Все свойства предела, установленные для специальной базы
+  $E\ni x\to a$, справедливы для пределов по любой базе.
+\end{properties}
+
+\clearpage
+\subsection{Вопросы существования предела функции}
+
+\begin{definition}{Колебание функции}{c3-oscillation}
+  Колебанием функции $f\colon X\to\R$ на множестве $E\subset X$
+  называется величина
+  \[
+    \omega(f;E):=\sup_{x_1,x_2\in E}|f(x_1)-f(x_2)|,
+  \]
+  то есть верхняя грань модуля разности значений функции на всевозможных
+  парах точек $x_1,x_2\in E$.
+\end{definition}
+
+\begin{theorem}{Критерий Коши существования предела функции}{c3-cauchy-criterion-function}
+  Пусть $X$ — множество и $\mathcal B$ — база в $X$.
+
+  Функция $f\colon X\to\R$ имеет предел по базе $\mathcal B$ в том и только
+  в том случае, когда для любого числа $\varepsilon>0$ найдется элемент
+  $B\in\mathcal B$ базы, на котором колебание функции меньше
+  $\varepsilon$:
+  \[
+    \exists\lim_{\mathcal B}f(x)
+    \quad\Longleftrightarrow\quad
+    \forall\varepsilon>0\ \exists B\in\mathcal B\
+    \bigl(\omega(f;B)<\varepsilon\bigr).
+  \]
+\end{theorem}
+
+\begin{theorem}{О пределе композиции функций}{c3-composition-limit}
+  Пусть $Y$ — множество; $\mathcal B_Y$ — база в $Y$;
+  $g\colon Y\to\R$ — отображение, имеющее предел по базе
+  $\mathcal B_Y$.
+
+  Пусть $X$ — множество, $\mathcal B_X$ — база в $X$ и
+  $f\colon X\to Y$ — такое отображение $X$ в $Y$, что для любого элемента
+  $B_Y\in\mathcal B_Y$ базы $\mathcal B_Y$ найдется элемент
+  $B_X\in\mathcal B_X$ базы $\mathcal B_X$, образ которого $f(B_X)$
+  содержится в $B_Y$.
+
+  При этих условиях композиция $g\circ f\colon X\to\R$ отображений $f$ и
+  $g$ определена, имеет предел по базе $\mathcal B_X$ и
+  \[
+    \lim_{\mathcal B_X}(g\circ f)(x)=\lim_{\mathcal B_Y}g(y).
+  \]
+\end{theorem}
+
+\begin{definition}{Монотонная функция}{c3-monotone-function}
+  Функция $f\colon E\to\R$, определенная на числовом множестве
+  $E\subset\R$, называется
+  \begin{itemize}
+    \item возрастающей на $E$, если
+      \[
+        \forall x_1,x_2\in E\;(x_1<x_2\Rightarrow f(x_1)<f(x_2));
+      \]
+    \item неубывающей на $E$, если
+      \[
+        \forall x_1,x_2\in E\;(x_1<x_2\Rightarrow f(x_1)\le f(x_2));
+      \]
+    \item невозрастающей на $E$, если
+      \[
+        \forall x_1,x_2\in E\;(x_1<x_2\Rightarrow f(x_1)\ge f(x_2));
+      \]
+    \item убывающей на $E$, если
+      \[
+        \forall x_1,x_2\in E\;(x_1<x_2\Rightarrow f(x_1)>f(x_2)).
+      \]
+  \end{itemize}
+  Функции перечисленных типов называются монотонными на множестве $E$.
+\end{definition}
+
+\begin{theorem}{Критерий существования предела монотонной функции}{c3-monotone-function-limit}
+  Предположим, что числа (или символы $-\infty$, $+\infty$)
+  $i=\inf E$ и $s=\sup E$ являются предельными точками множества $E$ и
+  $f\colon E\to\R$ — монотонная функция на $E$.
+
+  Для того чтобы неубывающая на множестве $E$ функция $f\colon E\to\R$
+  имела предел при $x\to s$, $x\in E$, необходимо и достаточно, чтобы она
+  была ограничена сверху, а для того чтобы она имела предел при $x\to i$,
+  $x\in E$, необходимо и достаточно, чтобы она была ограничена снизу.
+\end{theorem}
+
+\begin{definition}{Финальное свойство при базе}{c3-final-property}
+  Условимся говорить, что некоторое свойство функций или соотношение между
+  функциями выполнено финально при данной базе $\mathcal B$, если найдется
+  элемент $B\in\mathcal B$ базы, на котором оно имеет место.
+\end{definition}
+
+\begin{definition}{Символ $o$ малое}{c3-little-o}
+  Говорят, что функция $f$ есть бесконечно малая по сравнению с функцией
+  $g$ при базе $\mathcal B$ и пишут $f=o(g)$ или
+  $f=o_{\mathcal B}(g)$, если финально при базе $\mathcal B$ выполнено
+  соотношение
+  \[
+    f(x)=\alpha(x)g(x),
+  \]
+  где $\alpha$ — функция, бесконечно малая при базе $\mathcal B$.
+\end{definition}
+
+\begin{definition}{Бесконечно малая более высокого порядка}{c3-higher-order-infinitesimal}
+  Если $f=o_{\mathcal B}(g)$ и функция $g$ сама есть бесконечно малая при
+  базе $\mathcal B$, то говорят, что $f$ есть бесконечно малая более высокого
+  по сравнению с $g$ порядка при базе $\mathcal B$.
+\end{definition}
+
+\begin{definition}{Бесконечно большая функция}{c3-infinitely-large-function}
+  Функцию, стремящуюся к бесконечности при данной базе, называют бесконечно
+  большой функцией или просто бесконечно большой при данной базе.
+\end{definition}
+
+\begin{definition}{Бесконечно большая более высокого порядка}{c3-higher-order-infinite}
+  Если $f$ и $g$ — бесконечно большие при базе $\mathcal B$ и
+  $f=o_{\mathcal B}(g)$, то говорят, что $g$ есть бесконечно большая более
+  высокого порядка по сравнению с $f$.
+\end{definition}
+
+\begin{definition}{Символ $O$ большое}{c3-big-o}
+  Условимся, что запись $f=O(g)$ или $f=O_{\mathcal B}(g)$ при базе
+  $\mathcal B$ будет означать, что финально при базе $\mathcal B$ выполнено
+  соотношение
+  \[
+    f(x)=\beta(x)g(x),
+  \]
+  где $\beta(x)$ — финально ограниченная при базе $\mathcal B$ функция.
+
+  В частности, запись $f=O_{\mathcal B}(1)$ означает, что функция $f$
+  финально ограничена при базе $\mathcal B$.
+\end{definition}
+
+\begin{definition}{Функции одного порядка}{c3-same-order}
+  Говорят, что функции $f$ и $g$ одного порядка при базе $\mathcal B$ и
+  пишут $f\asymp_{\mathcal B}g$, если одновременно
+  \[
+    f=O_{\mathcal B}(g)
+    \qquad\text{и}\qquad
+    g=O_{\mathcal B}(f).
+  \]
+
+  Это условие равносильно тому, что найдутся числа $c_1>0$, $c_2>0$ и
+  элемент $B\in\mathcal B$ такие, что на $B$ имеют место соотношения
+  \[
+    c_1|g(x)|\le |f(x)|\le c_2|g(x)|.
+  \]
+\end{definition}
+
+\begin{definition}{Эквивалентные функции}{c3-equivalent-functions}
+  Если между функциями $f$ и $g$ финально при базе $\mathcal B$ выполнено
+  соотношение
+  \[
+    f(x)=\gamma(x)g(x),
+    \qquad
+    \lim_{\mathcal B}\gamma(x)=1,
+  \]
+  то говорят, что при базе $\mathcal B$ функция $f$ асимптотически ведет
+  себя как функция $g$ или, короче, что $f$ эквивалентна $g$ при базе
+  $\mathcal B$.
+
+  В этом случае пишут $f\sim g$ или $f\sim_{\mathcal B}g$.
+\end{definition}
+
+\begin{properties}{Эквивалентность функций}{c3-equivalence-properties}
+  \[
+    f\sim_{\mathcal B}f,
+  \]
+  \[
+    f\sim_{\mathcal B}g\quad\Longrightarrow\quad g\sim_{\mathcal B}f,
+  \]
+  \[
+    f\sim_{\mathcal B}g\ \land\ g\sim_{\mathcal B}h
+    \quad\Longrightarrow\quad
+    f\sim_{\mathcal B}h.
+  \]
+  Кроме того, соотношение $f\sim_{\mathcal B}g$ равносильно тому, что
+  \[
+    f(x)=g(x)+o_{\mathcal B}(g(x)).
+  \]
+\end{properties}
+
+\begin{proposition}{Замена на эквивалентную функцию в произведении}{c3-equivalent-substitution}
+  Если $f\sim_{\mathcal B}\widetilde f$, то
+  \[
+    \lim_{\mathcal B}f(x)g(x)
+    =
+    \lim_{\mathcal B}\widetilde f(x)g(x),
+  \]
+  если один из этих пределов существует.
+\end{proposition}
+
+\begin{proposition}{Правила обращения с символами $o(\cdot)$ и $O(\cdot)$}{c3-o-O-rules}
+  При данной базе:
+  \begin{enumerate}[label=\alph*)]
+    \item $o(f)+o(f)=o(f)$;
+    \item $o(f)$ есть также $O(f)$;
+    \item $o(f)+O(f)=O(f)$;
+    \item $O(f)+O(f)=O(f)$;
+    \item если $g(x)\ne0$, то
+      \[
+        \frac{o(f(x))}{g(x)}=o\!\left(\frac{f(x)}{g(x)}\right),
+        \qquad
+        \frac{O(f(x))}{g(x)}=O\!\left(\frac{f(x)}{g(x)}\right).
+      \]
+  \end{enumerate}
+\end{proposition}
